@@ -21,7 +21,17 @@ function validator(ccNumber) {
     // We take the first digit and store in group 1: /^(\d)
     // Then backreference with \1{15}$/
     let multipleDigits =/^(\d)\1{15}$/.test(ccString);
-    console.log('More than one digit? ' + !multipleDigits);
+    if (multipleDigits === false) {
+        console.log('The CC Number has more than one digit.');
+        //console.log('More than one digit? ' + !multipleDigits);
+    }
+
+    // Test if the final digit is even
+    let endRegex = /\d$/;
+    const lastDigit = parseInt(endRegex.exec(ccString));
+    console.log(lastDigit);
+
+    
     
 
 
