@@ -17,9 +17,12 @@ function validator(ccNumber) {
     // if one number occurs 16 times, there is only one number.
     // there must be at least 2.
 
-    //let testOnlyOneDigit = /\d{16}/g;
-    let multipleDigits = /[0-9]{16}/g.test(ccString);
-    console.log('More than one digit? ' + result);
+    // Explanation for the below regex
+    // We take the first digit and store in group 1: /^(\d)
+    // Then backreference with \1{15}$/
+    let multipleDigits =/^(\d)\1{15}$/.test(ccString);
+    console.log('More than one digit? ' + !multipleDigits);
+    
 
 
 
@@ -33,5 +36,5 @@ function validator(ccNumber) {
 }
 
 //validator(1111111111111111);
-validator(1111111111111112);
+validator(1111211111111111);
 //validator('143904819');
